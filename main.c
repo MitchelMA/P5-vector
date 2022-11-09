@@ -124,6 +124,16 @@ int main(void)
     printf("\tkwam daadwerkelijk langs dit punt: %s\n ", kwamlangs);
     // --------------
 
+    // opdracht 3 ---
+    printf("\nHoe snel na het verlaten van A is enemy bij punt F bij een snelheid van ve = 2?\n");
+    tmp = newVec2(f->x, f->y);
+    vec2SubVector(tmp, a);
+    len = vec2Magnitude(tmp);
+    free(tmp);
+    printf("\tde afstand van A naar f is %f, met een snelheid van 2 duurt dat %fm/s\n", len, len/2);
+
+    // --------------
+
     free(l);
     free(f);
     // -------------------------
