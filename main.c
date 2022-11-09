@@ -7,6 +7,7 @@
 
 #define RAD2DEG 57.29577951308232286
 #define DEG2RAD 0.01745329251994329547
+#define DELTA 0.01666666666
 
 int main(void)
 {
@@ -32,7 +33,7 @@ int main(void)
     // 2 De Basis
 
     // 2.1 De Basisobjecten ----
-    printf("2.1: De Basis\n");
+    printf("2.1 De Basis\n");
     a = newVec2(-6, 3);
     b = newVec2(5, 1);
 
@@ -67,7 +68,7 @@ int main(void)
     // 2.2 De enemy ------------
     float vel;
 
-    printf("\n\n2.2: De enemy\n");
+    printf("\n\n2.2 De enemy\n");
 
     // opdracht 1 ---
     printf("\n1. Wat is de waarde van ve>?\n");
@@ -182,7 +183,7 @@ int main(void)
     // 5.2 Het dotproduct of scalarproduct ---
     // reusing the direction vector
 
-    printf("\n5.2 Het dotproduct of scalarproduct\n");
+    printf("\n\n5.2 Het dotproduct of scalarproduct\n");
 
     // opdracht 1 ---
     printf("\n1. Wat is het inproduct van ve> * tf> bij ve = 1 m/s?\n");
@@ -200,10 +201,22 @@ int main(void)
     // opdracht 1 ---
     printf("\n1. Schrijf bovenstaande formule om in de vorm van \"cos(β) =\"\n");
     printf("\tcos(β) = (u> * v>) / (||u>|| * ||v>||)\n");
+    // --------------
 
+    // opdracht 2 ---
+    printf("\n2. Pas deze formule om de hoek cos(ϕ) tussen de vectoren ve> en tf> uit te drukken\n");
+    // cos(β) = (u> * v>) / (||u>|| * ||v>||)
+    // β = acos((u> * v>) / (||u>|| * ||v>||))
+    float angle = vec2Angle(dir_vec, tf);
+    printf("\tDe hoek is: %f graden\n", angle * RAD2DEG);
     // --------------
 
     // --------------------------------------------------------------
+
+    // 5.4 De cosinusregel -----
+    printf("\n\n5.4 De cosinusregel\n");
+
+    // -------------------------
 
 
     free(a);
