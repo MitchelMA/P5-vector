@@ -5,8 +5,13 @@
 #include "mvector/vector2.h"
 #include "lin/pqr.h"
 
+#define RAD2DEG 57.29577951308232286
+#define DEG2RAD 0.01745329251994329547
+
 int main(void)
 {
+    printf("RAD2DEG: %f\n", RAD2DEG);
+    printf("DEG2RAD: %f\n", DEG2RAD);
     // use for temporary vectors
     Vector2 *tmp;
 
@@ -15,6 +20,9 @@ int main(void)
 
     // Calculate from object A towards B
     Vector2 *d;
+
+    // vector f
+    Vector2 *f;
 
     // 2 De Basis
 
@@ -58,7 +66,7 @@ int main(void)
     printf("\n\n2.2: De enemy\n");
 
     // opdracht 1 ---
-    printf("1. Wat is de waarde van ve>?\n");
+    printf("\n1. Wat is de waarde van ve>?\n");
     dir_vec = vec2Normalized(d);
     vel = 1;
     vec2MultNum(dir_vec, vel);
@@ -68,7 +76,7 @@ int main(void)
 
     // opdracht 2 ---
     printf("\n2. Wat is de waarde van ||ve>||?\n");
-    printf("\t||ve>||: %f", vec2Magnitude(dir_vec));
+    printf("\t||ve>||: %f\n", vec2Magnitude(dir_vec));
     // --------------
 
     // opdracht 3 ---
@@ -105,9 +113,6 @@ int main(void)
     // linear formula l(x)
     Pqr *l;
 
-    // vector f
-    Vector2 *f;
-
     // opdracht 1 ---
     printf("\n1. Beschouw het speelveld als een plat vlak, waarbij de enemy door de punten A(-6, 3) en B(5, 1)\ngaat. Wat is de lineaire vergelijking van l(x) die door de punten A en B gaat?\n");
 
@@ -131,12 +136,49 @@ int main(void)
     len = vec2Magnitude(tmp);
     free(tmp);
     printf("\tde afstand van A naar f is %f, met een snelheid van 2 duurt dat %fm/s\n", len, len/2);
-
     // --------------
 
     free(l);
-    free(f);
     // -------------------------
+
+    // 4 De toren
+
+    // 4.1 Het plaatsen van de toren ---
+    Vector2 *t;
+    Vector2 *tf; // van f naar t
+    Vector2 *ft; // van t naar f
+
+    printf("\n\n4.1 Het plaatsen van de toren\n");
+
+    // opdracht 1 ---
+    printf("\n1. Wat is de waarde van de differencevector naar T van F: tf>?\n");
+    t = newVec2(-3, -3);
+    tf = newVec2(t->x, t->y);
+    vec2SubVector(tf, f);
+    printf("\ttf>: ");
+    printVec2(tf);
+    // --------------
+
+    // opdracht 2 ---
+    printf("\n2. Wat is de afstand naar T van F?\n");
+    printf("\t||tf||: %f\n", vec2Magnitude(tf));
+    // --------------
+
+    // opdracht 3 ---
+    printf("\n3. Om toren T te laten richten op punt F moeten wij weten welke hoek deze maakt t.o.v. de wereld.\n"
+    "Daarvoor gebruiken wij de tegenovergestelde differencevector naar F van T ft = -tf wat is de\n"
+    "hoek van ft t.o.v. de wereld (0*)?\n");
+    ft = newVec2(tf->x, tf->y);
+    vec2MultNum(ft, -1);
+    tmp = newVec2Angle(0);
+    printf("\tdat is %f graden\n", vec2Angle(ft, tmp) * RAD2DEG);
+    free(tmp);
+    // --------------
+
+    free(t);
+    free(tf);
+    free(ft);
+    // ---------------------------------
 
 
     return EXIT_SUCCESS;
