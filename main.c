@@ -3,6 +3,7 @@
 #include <math.h>
 
 #include "mvector/vector2.h"
+#include "lin/pqr.h"
 
 int main(void)
 {
@@ -11,6 +12,9 @@ int main(void)
 
     // Calculate from object A towards B
     Vector2 *d;
+
+    // linear formula l(x)
+    Pqr *l;
 
     a = newVec2(-6, 3);
     b = newVec2(5, 1);
@@ -26,10 +30,15 @@ int main(void)
     printf("\nVector d wijzend van A naar B: ");
     printVec2(d);
 
+    // calculate linear formula through A and B
+    l = newPqrPoints(a, b);
+    printf("lineaire formule door A en B: ");
+    printPqr(l);
 
 
     free(a);
     free(b);
     free(d);
+    free(l);
     return EXIT_SUCCESS;
 }
