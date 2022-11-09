@@ -7,7 +7,7 @@ mvector/vector2.o
 all: clean $(OBJS) build
 
 build:
-	$(CC) $(CFLAGS) -o main.out $(OBJS) -lm
+	$(CC) $(CFLAGS) -o main $(OBJS) -lm
 
 $(OBJS): %.o : %.c
 
