@@ -7,21 +7,19 @@
 
 int main(void)
 {
+    // use for temporary vectors
+    Vector2 *tmp;
+
+    // 2 De Basis
+
+    // 2.1 De Basisobjecten ----
+
     // positions of objects A and B
     Vector2 *a, *b;
 
     // Calculate from object A towards B
     Vector2 *d;
 
-    // use for temporary vectors
-    Vector2 *tmp;
-
-    // linear formula l(x)
-    Pqr *l;
-
-    // 2 De Basis
-
-    // 2.1 De Basisobjecten ----
     printf("2.1: De Basis\n");
     a = newVec2(-6, 3);
     b = newVec2(5, 1);
@@ -45,7 +43,7 @@ int main(void)
     // -------------- 
     
     // opdracht 3 ---
-    printf("\n3. Bereken de genormeerde eenheidsvector van d\n");
+    printf("\n3. Bereken de genormeerde eenheidsvector van d^\n");
     tmp = vec2Normalized(d);
     printf("\tgenormeerde vector hiervan: ");
     printVec2(tmp);
@@ -54,20 +52,16 @@ int main(void)
 
     // -------------------------
 
+    free(a);
+    free(b);
+    free(d);
     // 2.2 De enemy ------------
+    printf("\n\nOpdrachten van 2.2 zijn incompleet:\n");
+    printf("In de uitleg wordt nooit de waarde van de velocity\nvector gegeven, waardoor we er geen richting mee kunnen bereken.\n");
 
     // -------------------------
 
 
-    // calculate linear formula through A and B
-    l = newPqrPoints(a, b);
-    printf("\nlineaire formule door A en B: ");
-    printPqr(l);
 
-
-    free(a);
-    free(b);
-    free(d);
-    free(l);
     return EXIT_SUCCESS;
 }
