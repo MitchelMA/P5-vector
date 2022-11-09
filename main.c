@@ -10,8 +10,6 @@
 
 int main(void)
 {
-    printf("RAD2DEG: %f\n", RAD2DEG);
-    printf("DEG2RAD: %f\n", DEG2RAD);
     // use for temporary vectors
     Vector2 *tmp;
 
@@ -23,6 +21,13 @@ int main(void)
 
     // vector f
     Vector2 *f;
+
+    // direction vector
+    Vector2 *dir_vec;
+
+    Vector2 *t;
+    Vector2 *tf; // van f naar t
+    Vector2 *ft; // van t naar f
 
     // 2 De Basis
 
@@ -60,7 +65,6 @@ int main(void)
     // -------------------------
 
     // 2.2 De enemy ------------
-    Vector2 *dir_vec;
     float vel;
 
     printf("\n\n2.2: De enemy\n");
@@ -99,8 +103,6 @@ int main(void)
     
     // --------------
 
-
-    free(dir_vec);
     // -------------------------
 
     // 3 Het afleggen an de weg van A naar B
@@ -130,7 +132,7 @@ int main(void)
     // --------------
 
     // opdracht 3 ---
-    printf("\nHoe snel na het verlaten van A is enemy bij punt F bij een snelheid van ve = 2?\n");
+    printf("\n3. Hoe snel na het verlaten van A is enemy bij punt F bij een snelheid van ve = 2?\n");
     tmp = newVec2(f->x, f->y);
     vec2SubVector(tmp, a);
     len = vec2Magnitude(tmp);
@@ -144,9 +146,7 @@ int main(void)
     // 4 De toren
 
     // 4.1 Het plaatsen van de toren ---
-    Vector2 *t;
-    Vector2 *tf; // van f naar t
-    Vector2 *ft; // van t naar f
+
 
     printf("\n\n4.1 Het plaatsen van de toren\n");
 
@@ -174,12 +174,46 @@ int main(void)
     printf("\tdat is %f graden\n", vec2Angle(ft, tmp) * RAD2DEG);
     free(tmp);
     // --------------
-
-    free(t);
-    free(tf);
-    free(ft);
+    
     // ---------------------------------
 
+    // 5 Shoot
+
+    // 5.2 Het dotproduct of scalarproduct ---
+    // reusing the direction vector
+
+    printf("\n5.2 Het dotproduct of scalarproduct\n");
+
+    // opdracht 1 ---
+    printf("\n1. Wat is het inproduct van ve> * tf> bij ve = 1 m/s?\n");
+    vec2Normalize(dir_vec);
+    vec2MultNum(dir_vec, 1);
+    float outcome = vec2Dot(dir_vec, tf);
+    printf("\tDe inproduct van ve> * tf>: %f\n", outcome);
+    // --------------
+
+    // ---------------------------------------
+
+    // 5.3 Verband inproduct van vectoren en hoek tussen vectoren ---
+    printf("\n5.3 Verband inproduct van vectoren en hoek tussen vectoren\n");
+
+    // opdracht 1 ---
+    printf("\n1. Schrijf bovenstaande formule om in de vorm van \"cos(β) =\"\n");
+    printf("\tcos(β) = (u> * v>) / (||u>|| * ||v>||)\n");
+
+    // --------------
+
+    // --------------------------------------------------------------
+
+
+    free(a);
+    free(b);
+    free(d);
+    free(f);
+    free(tf);
+    free(ft);
+    free(t);
+    free(dir_vec);
 
     return EXIT_SUCCESS;
 }
